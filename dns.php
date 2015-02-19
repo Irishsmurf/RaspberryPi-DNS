@@ -35,21 +35,21 @@
     		'ChangeBatch' => array(
         	'Changes' => array(
         	    array(
-				'Action' => 'UPSERT',
-                'ResourceRecordSet' => array(
-                    'Name' => $domain,
-                    'Type' => 'A',
-                    'TTL' => 120,
-                    'ResourceRecords' => array(
-                        array(
-                            'Value' => $ip->{"ip"},
-                    	    ),
-                	    ),
+			'Action' => 'UPSERT',
+                	'ResourceRecordSet' => array(
+                		'Name' => $domain,
+                		'Type' => 'A',
+                		'TTL' => 120,
+                		'ResourceRecords' => array(
+                			array(
+                				'Value' => $ip->{"ip"},
+                			),
+                		),
+			),
             	    ),
-        	    ),
-    	    ),
- 	   ),
-	));
+    	    	),
+		),
+		));
 	}
 
 ?>
