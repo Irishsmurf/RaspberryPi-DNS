@@ -43,14 +43,13 @@
                     'ResourceRecords' => array(
                         array(
                             'Value' => $ip->{"ip"},
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-));
-	var_dump($result);	
+                    	    ),
+                	    ),
+            	    ),
+        	    ),
+    	    ),
+ 	   ),
+	));
 	}
 
 ?>
