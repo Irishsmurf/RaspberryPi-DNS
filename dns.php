@@ -8,6 +8,12 @@
 	$ip = json_decode(file_get_contents("http://ip.paddez.com?json"));
 	echo $ip->{"ip"}."\n";
 
+	//Is IPv6 or IPv4?
+	if(strpos($ip->{"ip"}, ':') !== false)
+		$type = 'AAAA';
+	else
+		$type = 'A';
+
 	$client = Route53Client::factory(array(
 	    'profile' => 'default'
 	));
@@ -22,7 +28,7 @@
 			'Action' => 'UPSERT',
                 	'ResourceRecordSet' => array(
                 		'Name' => $domain,
-                		'Type' => 'A',
+                		'Type' => $type,
                 		'TTL' => 120,
                 		'ResourceRecords' => array(
                 			array(
