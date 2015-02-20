@@ -11,24 +11,8 @@
 	$client = Route53Client::factory(array(
 	    'profile' => 'default'
 	));
-
-	$result = $client->listResourceRecordSets(array(
-		'HostedZoneId' => $hostedZoneID
-		));
-
-	$records = $result["ResourceRecordSets"];
 	
-	foreach($records as $record)
-	{
-		$name = $record["Name"];
-		if(strcmp($name, $domain) == 0)
-		{
-			$value = $record["ResourceRecords"][0]["Value"];		
-			break;
-		}
-	}
-
-	if(strcmp($ip->{"ip"}, $value) != 0)
+	if(strcmp($ip->{"ip"}, gethostbyname($domain)) != 0)
 	{
 		$result = $client->changeResourceRecordSets(array(
     		'HostedZoneId' => $hostedZoneID,
